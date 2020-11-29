@@ -2,8 +2,11 @@
   "name": "expensify",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Andrew Mead",
+  "author": "Framcis Joaquin",
   "license": "MIT",
+  "engines": {
+    "node": "12.4.0"
+  },
   "scripts": {
     "serve": "live-server public/",
     "build:dev": "webpack",
