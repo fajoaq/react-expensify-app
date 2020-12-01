@@ -30,11 +30,11 @@ export class ExpenseListFilters extends React.Component {
         <input
           type="text"
           value={this.props.filters.text}
-          onChange={ this.onTextChange }
+          onChange={this.onTextChange}
         />
         <select
           value={this.props.filters.sortBy}
-          onChange={ this.onSortChange }
+          onChange={this.onSortChange}
         >
           <option value="date">Date</option>
           <option value="amount">Amount</option>
@@ -54,16 +54,16 @@ export class ExpenseListFilters extends React.Component {
   }
 };
 
+const mapStateToProps = (state) => ({
+  filters: state.filters
+});
+
 const mapDispatchToProps = (dispatch) => ({
   setTextFilter: (text) => dispatch(setTextFilter(text)),
   sortByDate: () => dispatch(sortByDate()),
   sortByAmount: () => dispatch(sortByAmount()),
-  setStartDate: (startDate) => dispatch(setStartDate()),
+  setStartDate: (startDate) => dispatch(setStartDate(startDate)),
   setEndDate: (endDate) => dispatch(setEndDate(endDate))
-});
-
-const mapStateToProps = (state) => ({
-  filters: state.filters
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExpenseListFilters);
