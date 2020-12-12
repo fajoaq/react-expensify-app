@@ -2,7 +2,7 @@
   "name": "expensify",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Framcis Joaquin",
+  "author": "Francis Joaquin",
   "license": "MIT",
   "engines": {
     "node": "12.4.0"
