@@ -6,6 +6,14 @@ import database from '../../firebase/firebase';
 
 const createMockStore = configureMockStore([thunk]);
 
+beforeEach( done => {
+    const expenseData = {};
+    expenses.forEach(({ id, description, note, amount, createdAt }) => {
+      expenseData[id] = { description, note, amount, createdAt }
+    });
+    database.ref('expenses').set(expenseData).then(() => done());
+});
+
 test('should setup remove expense action object', () => {
   const action = removeExpense({ id: '123abc' });
   expect(action).toEqual({
@@ -33,7 +41,7 @@ test('should setup add expense action object with provided values', () => {
   });
 });
 
-/* test('should add expense to database and store', (done) => {
+test('should add expense to database and store', done => {
   const store = createMockStore({});
   const expenseData = {
     description: 'Mouse',
@@ -57,12 +65,12 @@ test('should setup add expense action object with provided values', () => {
       expect(snapshot.val()).toEqual(expenseData);
       done();
   });
-});  */
+}); 
 
 
 
 
-/* test('should add expense with defaults to database and store', (done) => {
+test('should add expense with defaults to database and store', done => {
   const store = createMockStore({});
   const expenseDefault = {
     description: '',
@@ -86,4 +94,4 @@ test('should setup add expense action object with provided values', () => {
       expect(snapshot.val()).toEqual(expenseDefault);
       done();
   });
-}); */
+});
