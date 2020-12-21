@@ -1,0 +1,24 @@
+.button {
+    display: inline-block;
+    background: $blue;
+    color: white;
+    border: none;
+    padding: $s-size;
+    font-size: $font-size-large;
+    font-weight: 300;
+    line-height: 1;
+    text-decoration: none;
+}
+
+.button--link {
+    background: none;
+}
+
+.button--secondary {
+    background: #888888;
+}
+
+.button--flex-end {
+    display: flex;
+    justify-content: flex-end;
+}
