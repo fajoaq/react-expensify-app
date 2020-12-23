@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { startLogin } from '../actions/auth';
-import { AiFillGithub } from 'react-icons/Ai';
-import { FcGoogle } from 'react-icons/Fc'; 
+import { AiFillGithub } from 'react-icons/ai';
+import { FcGoogle } from 'react-icons/fc'; 
 
 export const LoginPage = ({ startLogin }) => (
     <div className="box-layout">
