@@ -3,16 +3,18 @@ import { shallow } from 'enzyme';
 import expenses from '../fixtures/expenses';
 import { EditExpensePage } from '../../components/EditExpensePage';
 
-let startEditExpense, startRemoveExpense, history, wrapper;
+let startEditExpense, startRemoveExpense, onInitiateRemove, history, wrapper;
 
 beforeEach(() => {
   startEditExpense = jest.fn();
   startRemoveExpense = jest.fn();
+  onInitiateRemove = jest.fn()
   history = { push: jest.fn() };
   wrapper = shallow(
     <EditExpensePage
       startEditExpense={startEditExpense}
       startRemoveExpense={startRemoveExpense}
+      onInitiateRemove = { onInitiateRemove }
       history={history}
       expense={expenses[2]}
     />
@@ -29,10 +31,17 @@ test('should handle startEditExpense', () => {
   expect(startEditExpense).toHaveBeenLastCalledWith(expenses[2].id, expenses[2]);
 });
 
-test('should handle startRemoveExpense', () => {
-  wrapper.find('button').simulate('click');
+/* test('should handle startRemoveExpense', () => {
+  wrapper.find('#remove').simulate('click');
+  wrapper.find('#confirm').simulate('click');
+
   expect(history.push).toHaveBeenLastCalledWith('/');
   expect(startRemoveExpense).toHaveBeenLastCalledWith({
     id: expenses[2].id
   });
-});
+}); */
+
+/* test("Should initiate remove expense modal", () => {
+  wrapper.find('#remove').simulate('click');
+  expect(onInitiateRemove).toHaveBeenCalled();
+}) */

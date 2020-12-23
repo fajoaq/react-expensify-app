@@ -2,6 +2,12 @@
 
 exports[`should render EditExpensePage 1`] = `
 <div>
+  <ExpenseModal
+    contentLabel="Credit Card"
+    handleClearRemove={[Function]}
+    initiateRemove={false}
+    onRemove={[Function]}
+  />
   <div
     className="page-header"
   >
@@ -35,6 +41,7 @@ exports[`should render EditExpensePage 1`] = `
     >
       <button
         className="button button--secondary"
+        id="remove"
         onClick={[Function]}
       >
         Delete

@@ -1,20 +1,39 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import ExpenseForm from './ExpenseForm';
 import { startEditExpense, startRemoveExpense } from '../actions/expenses';
+import ExpenseModal from './ExpenseModal';
 
 export class EditExpensePage extends React.Component {
+  state = {
+    initiateRemove: false
+  };
+
   onSubmit = (expense) => {
     this.props.startEditExpense(this.props.expense.id, expense);
     this.props.history.push('/');
+  };
+  //display modal
+  onInitiateRemove = () => {
+    this.setState(() => ({ initiateRemove: true }));
   };
   onRemove = () => {
     this.props.startRemoveExpense({ id: this.props.expense.id });
     this.props.history.push('/');
   };
+  handleClearRemove = () => {
+    this.setState(() => ({ initiateRemove: false }));
+  };
   render() {
     return (
       <div>
+        <ExpenseModal
+          contentLabel={ this.props.expense.description }
+          initiateRemove={ this.state.initiateRemove }
+          handleClearRemove={ this.handleClearRemove }
+          onRemove={ this.onRemove}
+        />
         <div className="page-header">
           <div className="content-container">
             <h1 className="page-header__title">Edit Expense</h1>
@@ -26,7 +45,7 @@ export class EditExpensePage extends React.Component {
             onSubmit={this.onSubmit}
           />
           <div className="button--flex-end">
-            <button className="button button--secondary" onClick={this.onRemove}>Delete</button>
+            <button id="remove" className="button button--secondary" onClick={ this.onInitiateRemove }>Delete</button>
           </div>
         </div>
       </div>
