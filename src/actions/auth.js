@@ -1,14 +1,23 @@
-import { firebase, googleAuthProvider } from '../firebase/firebase';
+import { firebase, googleAuthProvider, gitHubAuthProvider } from '../firebase/firebase';
 
 export const login = (uid) => ({
     type: 'LOGIN',
     uid
 });
 
-export const startLogin = () => {
-    return () =>{
-        return firebase.auth().signInWithPopup(googleAuthProvider);
-    };
+export const startLogin = ({ target }) => {
+    switch(target.id) {
+        case 'googleLogin':
+            return () =>{
+                return firebase.auth().signInWithPopup(googleAuthProvider);
+            };
+        case 'gitHubLogin':
+            return () =>{
+                return firebase.auth().signInWithPopup(gitHubAuthProvider);
+            };
+        default:
+            throw new Error('Please provide a service id');
+    }
 };
 
 export const logout = () => ({

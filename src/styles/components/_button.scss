@@ -23,6 +23,16 @@
     background: #888888;
 }
 
+.button--login {
+    background: darken($blue, 20%);
+    border-radius: 49%;
+    font-size: $font-size-xtra;
+    line-height: .8;
+}
+.button--login > * {
+    pointer-events: none;
+}
+
 .button--flex-end {
     display: flex;
     justify-content: flex-end;
