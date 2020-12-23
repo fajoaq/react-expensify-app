@@ -7,10 +7,11 @@ export const ExpenseModal = (props) => (
         contentLabel="Remove expense?"
         closeTimeoutMS={350}
         appElement={app}
-        className="modal-container"
+        parentSelector={() => document.querySelector('#app')}
         shouldCloseOnEsc={ true }
         shouldCloseOnOverlayClick={ true }
         onRequestClose={ props.handleClearRemove }
+        className="modal-container"
     >
         <div className={ !!props.initiateRemove ? "modal modal--open" : "modal" }>
             <h3 className="modal__title">Remove expense? </h3>

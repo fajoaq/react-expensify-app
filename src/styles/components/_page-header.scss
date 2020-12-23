@@ -14,3 +14,9 @@
 .page-header__actions {
     margin-top: $m-size;
 }
+
+.page-header__error {
+    font-size: $font-size-small;
+    font-style: italic;
+    font-weight: 300;
+}
